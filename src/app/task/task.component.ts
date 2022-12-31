@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../Shared/Models/Task';
 
 @Component({
@@ -9,13 +9,14 @@ import { Task } from '../Shared/Models/Task';
 export class TaskComponent {
   @Input('title') title: string = '';
   @Input('task') tasks: Task[] = [];
-  @Input('actions') actions: Array<string> = [];
+  @Input('actions') actions: Array<{key: string, title: string}> = [];
+
+  @Output('onActionClicked') onActionClicked = new EventEmitter();
 
   constructor() {
   }
 
-  onActionClicked(task: Task, title: string, action: string): void {
-    console.log(task, title, action);
-    
+  actionClicked(task: Task, action: {key: string, title: string}): void {
+    this.onActionClicked.emit({task, action});
   }
 }

@@ -7,8 +7,8 @@
     </h5>
   </div>
   <div class="card-body">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-body">
+    <div class="card mb-4 rounded-3 shadow-sm  ">
+      <div class="card-body ">
         <ng-container *ngFor="let item of tasks">
           <div class="d-flex text-muted pt-3 mb-3">
             <svg
@@ -57,7 +57,7 @@
               <ul class="dropdown-menu" >
                 <li
                   *ngFor="let action of actions; let i = index"
-                  (click)="onActionClicked(item, title, action)">{{ action }}</li>
+                  (click)="actionClicked(item, action)">{{ action.title }}</li>
               </ul>
             </div>
           </div>

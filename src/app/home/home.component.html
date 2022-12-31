@@ -6,28 +6,32 @@
         <app-task
           [title]="'Ready for Development'"
           [task]="readyForDevelopment"
-          [actions]="filterAction(['Ready for Development', 'Closed'], actions)">
+          [actions]="filterAction(['Ready for Development'], actions)"
+          (onActionClicked)="handleActionClicked($event, 'readyForDevelopment')">
         </app-task>
       </div>
       <div class="col-md-3">
         <app-task
           [title]="'In Progress'"
           [task]="inProgress"
-          [actions]="filterAction(['In Progress'], actions)">
+          [actions]="filterAction(['In Progress'], actions)"
+          (onActionClicked)="handleActionClicked($event, 'inProgress')">
         </app-task>
       </div>
       <div class="col-md-3">
         <app-task
           [title]="'Ready for QA'"
           [task]="qa"
-          [actions]="filterAction(['Ready for QA'], actions)">
+          [actions]="filterAction(['Ready for QA'], actions)"
+          (onActionClicked)="handleActionClicked($event, 'qa')">
         </app-task>
       </div>
       <div class="col-md-3">
         <app-task
           [title]="'Production'"
           [task]="production"
-          [actions]="filterAction(['Production'], actions)">
+          [actions]="filterAction(['Production'], actions)"
+          (onActionClicked)="handleActionClicked($event, 'production')">
         </app-task>
       </div>
     </div>
