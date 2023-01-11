@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { Task } from '../shared/model/task';
-import { Action } from '../shared/utils/board';
-import { developement, progress, Qa, production } from '../shared/utils/tasks';
+import { Action } from '../shared/utils/action';
+import { Development, InProgress, Qa, Production } from '../shared/utils/Tasks';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-
-  public developement: any[] = developement
-  public progress: Task[] = progress
-  public qA: Task[] = Qa
-  public production: Task[] = production
+  public readyForDevelopment: any[] = Development;
+  public inProgress: Task[] = InProgress;
+  public qa: Task[] = Qa;
+  public production: Task[] = Production;
 
   public actions = Action;
   
