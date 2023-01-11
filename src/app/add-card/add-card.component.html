@@ -1,0 +1,127 @@
+<button
+  type="button"
+  class="btn btn-xs btn-outline-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Add a card
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="taskForm.reset()"
+        ></button>
+      </div>
+      <form [formGroup]="taskForm" (submit)="save()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Task Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="title"
+              id="exampleFormControlInput1"
+              placeholder="Task Name"
+            />
+          </div>
+          <ng-container
+            *ngIf="
+              taskForm.get('title')?.touched || taskForm.get('title')?.dirty
+            "
+          >
+            <div
+              class="text-danger"
+              *ngIf="
+                taskForm.controls['title'].errors &&
+                taskForm.controls['title'].errors['required']
+              "
+            >
+              Task Name is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                taskForm.controls['title'].errors &&
+                taskForm.controls['title'].errors['minlength']
+              "
+            >
+              Minimum 3 character Allowed
+            </div>
+          </ng-container>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Task Description</label
+            >
+            <textarea
+              class="form-control"
+              formControlName="description"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            >
+            </textarea>
+          </div>
+          <ng-container
+            *ngIf="
+              taskForm.get('description')?.touched || taskForm.get('description')?.dirty">
+            <div
+              class="text-danger"
+              *ngIf="
+                taskForm.controls['description'].errors &&
+                taskForm.controls['description'].errors['required']
+              "
+            >
+              Description is required
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                taskForm.controls['description'].errors &&
+                taskForm.controls['description'].errors['maxlength']
+              "
+            >
+              Minimum 20 character Allowed
+            </div>
+          </ng-container>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="taskForm.reset()"
+        >
+          Close
+        </button>
+        <button type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="save()">
+          Save changes
+        </button>
+        <button type="button"
+          class="btn btn-danger"
+          (click)="taskForm.reset()">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
