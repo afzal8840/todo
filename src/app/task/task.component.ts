@@ -12,11 +12,16 @@ export class TaskComponent {
   @Input('actions') actions: Array<{key: string, title: string}> = [];
 
   @Output('onActionClicked') onActionClicked = new EventEmitter();
+  @Output('handleFormSubmit') handleFormSubmit = new EventEmitter();
 
   constructor() {
   }
 
   actionClicked(task: Task, action: {key: string, title: string}): void {
     this.onActionClicked.emit({task, action});
+  }
+
+  saveClicked(data: any): void {
+    this.handleFormSubmit.emit(data);
   }
 }

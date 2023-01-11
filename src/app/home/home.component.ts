@@ -1,3 +1,4 @@
+import { NewCard } from './../Shared/utils/Tasks';
 import { Action } from './../Shared/utils/action';
 import { Component } from '@angular/core';
 import { Development, InProgress, Production, Qa } from '../Shared/utils/Tasks';
@@ -13,6 +14,7 @@ export class HomeComponent {
   public inProgress: Task[] = InProgress;
   public qa: Task[] = Qa;
   public production: Task[] = Production;
+  public newCard: Task[] = NewCard;
 
   public actions = Action;
 
@@ -32,6 +34,10 @@ export class HomeComponent {
     const index = this[key].findIndex(action => action.title === ev.task.title);
     if (index !== -1) this[key].splice(index, 1);
     
-    this[ev.action.key].unshift(ev.task);
+    this[ev.action.key].push(ev.task);
+  }
+
+  addTask(ev, key: string) {
+    console.log(ev,key);
   }
 }

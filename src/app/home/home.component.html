@@ -7,7 +7,8 @@
           [title]="'Ready for Development'"
           [task]="readyForDevelopment"
           [actions]="filterAction(['Ready for Development'], actions)"
-          (onActionClicked)="handleActionClicked($event, 'readyForDevelopment')">
+          (onActionClicked)="handleActionClicked($event, 'readyForDevelopment')"
+          (handleFormSubmit)="addTask($event, 'readyForDevelopment')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -15,7 +16,8 @@
           [title]="'In Progress'"
           [task]="inProgress"
           [actions]="filterAction(['In Progress'], actions)"
-          (onActionClicked)="handleActionClicked($event, 'inProgress')">
+          (onActionClicked)="handleActionClicked($event, 'inProgress')"
+          (handleFormSubmit)="addTask($event, 'inProgress')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -23,7 +25,8 @@
           [title]="'Ready for QA'"
           [task]="qa"
           [actions]="filterAction(['Ready for QA'], actions)"
-          (onActionClicked)="handleActionClicked($event, 'qa')">
+          (onActionClicked)="handleActionClicked($event, 'qa')"
+          (handleFormSubmit)="addTask($event, 'qa')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -31,7 +34,16 @@
           [title]="'Production'"
           [task]="production"
           [actions]="filterAction(['Production'], actions)"
-          (onActionClicked)="handleActionClicked($event, 'production')">
+          (onActionClicked)="handleActionClicked($event, 'production')"
+          (handleFormSubmit)="addTask($event, 'production')">
+        </app-task>
+      </div>
+      <div class="col-md-3">
+        <app-task
+          [title]="'New Card'"
+          [task]="newCard"
+          [actions]="filterAction(['New Card'], actions)"
+          (onActionClicked)="handleActionClicked($event, 'newCard')">
         </app-task>
       </div>
     </div>
