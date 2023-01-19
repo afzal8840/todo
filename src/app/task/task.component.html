@@ -64,6 +64,11 @@
         </ng-container>
       </div>
     </div>
-    <app-add-card (onFormSubmit)="saveClicked($event)"></app-add-card>
+    <button
+      type="button"
+      class="btn btn-xs btn-outline-primary"
+      (click)="onAddButtonClicked.emit()">
+      Add a card
+    </button>
   </div>
 </div>

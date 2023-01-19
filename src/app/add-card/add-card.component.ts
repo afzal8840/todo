@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddCardComponent implements OnInit {
   @Output('onFormSubmit') onFormSubmit = new EventEmitter();
 
-  public form: FormGroup;
+  public  form: FormGroup;
   
   constructor(
     private fb: FormBuilder
@@ -22,8 +22,8 @@ export class AddCardComponent implements OnInit {
 
   initializeForm()  {
     this.form = this.fb.group({
-      title: [null, [Validators.required, Validators.minLength(3)]],
-      description: [null, [Validators.required, Validators.maxLength(100)]]
+      title: [null, [Validators.required, Validators.minLength(8)]],
+      description: [null, [Validators.required, Validators.maxLength(100)]],
     });
   }
 

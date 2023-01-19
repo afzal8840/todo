@@ -8,7 +8,7 @@
           [task]="readyForDevelopment"
           [actions]="filterAction(['Ready for Development'], actions)"
           (onActionClicked)="handleActionClicked($event, 'readyForDevelopment')"
-          (handleFormSubmit)="addTask($event, 'readyForDevelopment')">
+          (onAddButtonClicked)="openAddModal('readyForDevelopment')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -17,7 +17,7 @@
           [task]="inProgress"
           [actions]="filterAction(['In Progress'], actions)"
           (onActionClicked)="handleActionClicked($event, 'inProgress')"
-          (handleFormSubmit)="addTask($event, 'inProgress')">
+          (onAddButtonClicked)="openAddModal('inProgress')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -26,7 +26,7 @@
           [task]="qa"
           [actions]="filterAction(['Ready for QA'], actions)"
           (onActionClicked)="handleActionClicked($event, 'qa')"
-          (handleFormSubmit)="addTask($event, 'qa')">
+          (onAddButtonClicked)="openAddModal('qa')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -35,7 +35,7 @@
           [task]="production"
           [actions]="filterAction(['Production'], actions)"
           (onActionClicked)="handleActionClicked($event, 'production')"
-          (handleFormSubmit)="addTask($event, 'production')">
+          (onAddButtonClicked)="openAddModal('production')">
         </app-task>
       </div>
       <div class="col-md-3">
@@ -43,10 +43,44 @@
           [title]="'New Card'"
           [task]="newCard"
           [actions]="filterAction(['New Card'], actions)"
-          (onActionClicked)="handleActionClicked($event, 'newCard')">
+          (onActionClicked)="handleActionClicked($event, 'newCard')"
+          (onAddButtonClicked)="openAddModal('newCard')">
         </app-task>
       </div>
     </div>
   </main>
   <app-footer></app-footer>
 </div>
+
+
+<!-- Add Form Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add task</h1>
+        <button
+          #closeModalButton
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close">
+        </button>
+      </div>
+      <app-add-card (onFormSubmit)="addTask($event)"></app-add-card>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden Buttons -->
+<button
+  #addModalButton
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  [hidden]="true">Open Add Form
+</button>
