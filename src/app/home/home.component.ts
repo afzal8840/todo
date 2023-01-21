@@ -1,5 +1,6 @@
+import { NewCard } from './../Shared/utils/Tasks';
 import { Action } from './../Shared/utils/action';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Development, InProgress, Production, Qa } from '../Shared/utils/Tasks';
 import { Task } from '../Shared/Models/Task';
 
@@ -9,12 +10,17 @@ import { Task } from '../Shared/Models/Task';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  @ViewChild('addModalButton') addModalButton: ElementRef;
+  @ViewChild('closeModalButton') closeModalButton: ElementRef;
+  
   public readyForDevelopment: any[] = Development;
   public inProgress: Task[] = InProgress;
   public qa: Task[] = Qa;
   public production: Task[] = Production;
+  public newCard: Task[] = NewCard;
 
   public actions = Action;
+  public currentState: string;
 
   constructor() {}
 
@@ -32,6 +38,16 @@ export class HomeComponent {
     const index = this[key].findIndex(action => action.title === ev.task.title);
     if (index !== -1) this[key].splice(index, 1);
     
-    this[ev.action.key].unshift(ev.task);
+    this[ev.action.key].push(ev.task);
+  }
+
+  openAddModal(state: string) {
+    this.currentState = state;
+    this.addModalButton.nativeElement.click();
+  }
+
+  addTask(ev) {
+    this.closeModalButton.nativeElement.click();
+    this[this.currentState].push(ev);
   }
 }

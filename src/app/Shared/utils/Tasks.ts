@@ -16,7 +16,7 @@ export const InProgress = [
       description: 'Developer',
     },
     {
-      title: 'Shabahat',
+      title: 'Arshiyan',
       description: 'Developer',
     },
 ];
@@ -37,8 +37,16 @@ export const Production = [
       title: 'Aamir',
       description: 'Developer',
     },
-    {
-      title: 'Farman-Bhai',
-      description: 'Developer',
-    },
+    
+];
+
+export const NewCard = [
+  {
+    title: 'Gul Bhai',
+    description: 'Developer',
+  },
+  {
+    title: 'Farman-Bhai',
+    description: 'Developer',
+  },
 ];

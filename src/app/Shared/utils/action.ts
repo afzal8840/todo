@@ -15,5 +15,9 @@ export const Action = [
     {
         key: 'production',
         title: 'Production'
+    },
+    {
+        key: 'newCard',
+        title: 'New Card'
     }
 ];
